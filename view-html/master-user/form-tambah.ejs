@@ -1,0 +1,71 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+        <%- include('../layout/notif-message') %>
+            <%- include('../layout/notif-validasi-error') %>
+
+                <div class="container-fluid">
+
+                    <h1>Tambah User Baru</h1>
+                    <hr>
+
+                    <form action="/user/insert" method="post">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="form_username" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" name="form_password" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" name="form_nama" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Role</label>
+
+                                    <select name="form_role" class="form-control">
+
+                                        <% data_jabatan.forEach(function(jabatan){ %>
+
+                                            <option value="<%= jabatan.id %>">
+                                                <%= jabatan.nama %> - <%= jabatan.departemen %>
+                                            </option>
+
+                                            <% }) %>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Status</label>
+
+                                    <select name="form_status" class="form-control">
+                                        <option value="aktif">Aktif</option>
+                                        <option value="nonaktif">Nonaktif</option>
+                                    </select>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-save"></i> Simpan
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <%- include('../layout/footer') %>

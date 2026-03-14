@@ -5,6 +5,9 @@ module.exports =
 {
 
     form_login: function(req,res) {
+        if(req.session.user)
+        res.redirect('/dashboard')
+        else
         res.render('auth/form-login', {
             req: req,
         }) //ejs
@@ -47,6 +50,12 @@ module.exports =
         } else {
             res.redirect('/login?msg=Anda Belum Login!')
         }
+    },
+
+    logout: function(req,res) {
+        req.session.destroy(function(){
+            res.redirect('/login?msg=anda sudah keluar dari aplikasi!')
+        })
     }
 
 }

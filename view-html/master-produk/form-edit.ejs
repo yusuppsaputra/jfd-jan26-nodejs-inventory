@@ -1,0 +1,58 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+
+        <div class="container-fluid">
+
+            <h1>Edit Produk</h1>
+            <hr>
+
+            <form action="/produk/update/<%= data_produk.id %>" method="post" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label>Kode Barang</label>
+                    <input type="text" name="form_kode_barang" class="form-control" value="<%= data_produk.kode %>">
+                </div>
+
+                <div class="mb-3">
+                    <label>Nama Barang</label>
+                    <input type="text" name="form_nama_barang" class="form-control" value="<%= data_produk.nama %>">
+                </div>
+
+                <div class="mb-3">
+                    <label>Deskripsi</label>
+                    <textarea name="form_deskripsi" class="form-control"><%= data_produk.deskripsi %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label>Foto Lama</label><br>
+
+                    <% if(data_produk.foto){ %>
+
+                        <img src="/upload-image/<%= data_produk.foto %>" width="150" class="img-thumbnail">
+
+                        <% } else { %>
+
+                            Tidak ada foto
+
+                            <% } %>
+
+                </div>
+
+                <div class="mb-3">
+                    <label>Upload Foto Baru</label>
+                    <input type="file" name="form_upload_foto" class="form-control">
+                </div>
+
+                <button class="btn btn-primary">
+                    Update Produk
+                </button>
+
+                <a href="/produk" class="btn btn-secondary">
+                    Kembali
+                </a>
+
+            </form>
+
+        </div>
+
+        <%- include('../layout/footer') %>

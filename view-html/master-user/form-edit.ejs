@@ -1,0 +1,70 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+
+        <div class="container-fluid">
+
+            <h1>Edit User</h1>
+            <hr>
+
+            <form action="/user/update/<%= data_user.id %>" method="post">
+
+                <div class="mb-3">
+                    <label>Username</label>
+                    <input type="text" name="form_username" class="form-control" value="<%= data_user.username %>">
+                </div>
+
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="text" name="form_password" class="form-control" value="<%= data_user.password %>">
+                </div>
+
+                <div class="mb-3">
+                    <label>Nama</label>
+                    <input type="text" name="form_nama" class="form-control" value="<%= data_user.nama %>">
+                </div>
+
+                <div class="mb-3">
+                    <label>Role</label>
+
+                    <select name="form_role" class="form-control">
+
+                        <% data_jabatan.forEach(function(jabatan){ %>
+
+                            <option value="<%= jabatan.id %>" <%=data_user.id_jabatan==jabatan.id ? 'selected' : '' %>>
+                                <%= jabatan.nama %>
+                            </option>
+
+                            <% }) %>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+                    <label>Status</label>
+
+                    <select name="form_status" class="form-control">
+
+                        <option value="aktif" <%=data_user.status=='aktif' ? 'selected' : '' %>>
+                            Aktif
+                        </option>
+
+                        <option value="nonaktif" <%=data_user.status=='nonaktif' ? 'selected' : '' %>>
+                            Nonaktif
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="btn btn-primary">Update</button>
+
+                <a href="/user" class="btn btn-secondary">
+                    Kembali
+                </a>
+
+            </form>
+
+        </div>
+
+        <%- include('../layout/footer') %>

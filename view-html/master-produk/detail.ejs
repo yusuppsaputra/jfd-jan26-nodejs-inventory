@@ -1,0 +1,59 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+
+        <h1>Detail Produk</h1>
+        <hr>
+
+        <div class="card">
+            <div class="card-body">
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <td width="200">Kode Barang</td>
+                        <td>
+                            <%= data_produk.kode %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Nama Barang</td>
+                        <td>
+                            <%= data_produk.nama %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Deskripsi</td>
+                        <td>
+                            <%= data_produk.deskripsi %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Foto</td>
+                        <td>
+
+                            <% if(data_produk.foto){ %>
+
+                                <img src="/upload-image/<%= data_produk.foto %>" width="200" class="img-thumbnail">
+
+                                <% } else { %>
+
+                                    Tidak ada foto
+
+                                    <% } %>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+                <a href="/produk" class="btn btn-secondary">
+                    Kembali
+                </a>
+
+            </div>
+        </div>
+
+        <%- include('../layout/footer') %>

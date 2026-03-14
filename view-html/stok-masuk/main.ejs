@@ -1,0 +1,37 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+        <%- include('../layout/notif-message') %>
+        <%- include('../layout/notif-validasi-error') %>
+
+            <h1>Stok Masuk</h1>
+            <hr>
+            <form action="/stok-masuk/insert" method="post">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="mb-3">
+                            <label class="form-label">Kode barang</label>
+                            <select name="form_kode_barang" class="form-select" required>
+                                <option value="">-- pilih --</option>
+                                <% for( let i=0; i < produk.length; i++ ) { %>
+                                    <option value="<%= produk[i].kode %>">
+                                        <%= produk[i].kode.toUpperCase() %> - <%= produk[i].nama %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Qty Masuk</label>
+                            <input type="number" name="form_qty_masuk" class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-save"></i> Simpan
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+
+            <%- include('../layout/footer') %>

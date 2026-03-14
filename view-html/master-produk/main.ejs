@@ -1,0 +1,63 @@
+<%- include('../layout/menu-atas') %>
+    <%- include('../layout/menu-kiri') %>
+        <%- include('../layout/notif-message') %>
+
+            <h1>Halaman master produk</h1>
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="h3">List Produk</span>
+                        <a href="/produk/create" class="btn btn-sm btn-primary float-end">
+                            <i class="fa-solid fa-plus"></i> Tambah Produk
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Foto</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for( let i=0; i < data_produk.length; i++ ) { %>
+                                <tr>
+                                    <td>
+                                        <%= data_produk[i].kode %>
+                                    </td>
+                                    <td>
+                                        <%= data_produk[i].nama %>
+                                    </td>
+                                    <td class="text-center">
+                                        <% if (data_produk[i].foto) { %>
+                                            <img src="/upload-image/<%= data_produk[i].foto %>"
+                                                alt="foto produk <%= data_produk[i].nama %>" width="100">
+                                            <% } %>
+                                    </td>
+                                    <td>
+                                        <a href="/produk/detail/<%= data_produk[i].id %>" class="btn btn-sm btn-info">
+                                            <i class="fa-solid fa-info-circle"></i> Detail
+                                        </a>
+                                    
+                                        <a href="/produk/edit/<%= data_produk[i].id %>" class="btn btn-sm btn-warning">
+                                            <i class="fa-solid fa-edit"></i> Edit
+                                        </a>
+                                    
+                                        <a href="/produk/delete/<%= data_produk[i].id %>" onclick="return confirm('Yakin ingin hapus data ini?')"
+                                            class="btn btn-sm btn-danger">
+                                            <i class="fa-solid fa-trash"></i> Hapus
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <%- include('../layout/footer') %>
